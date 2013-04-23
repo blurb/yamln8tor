@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require "yamln8tor/cli"
+Yamln8tor::Cli.start
+
