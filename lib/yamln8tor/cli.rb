@@ -12,9 +12,8 @@ module Yamln8tor
       Dir.chdir(directory)
       files = Dir.glob "**/*.yml"
       files.each do |f|
-        yaml = File.read f
         begin
-          Psych.load(yaml, f)
+          Psych.load_file(f)
         rescue Psych::SyntaxError => e
           errors << e
           puts e.message
