@@ -2,7 +2,7 @@ require "thor"
 require "psych"
 
 module Yamln8tor
-  Cli < Thor
+  class Cli < Thor
     desc "validate DIRECTORY", "Validate syntax for all YAML files in the given base directory"
     def validate(directory=".")
       errors = []
