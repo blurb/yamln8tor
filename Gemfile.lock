@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    yamln8tor (0.0.1)
+    yamln8tor (0.0.2)
       psych
       thor
 
