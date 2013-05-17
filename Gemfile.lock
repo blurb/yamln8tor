@@ -8,6 +8,13 @@ GEM
   remote: http://rubygems.org/
   specs:
     diff-lcs (1.2.4)
+    guard (1.4.0)
+      listen (>= 0.4.2)
+      thor (>= 0.14.6)
+    guard-rspec (1.2.1)
+      guard (>= 1.1)
+    listen (0.6.0)
+    rb-fsevent (0.9.2)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -22,5 +29,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  guard-rspec
+  rb-fsevent
   rspec (~> 2.13.0)
   yamln8tor!

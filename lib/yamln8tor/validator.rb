@@ -8,9 +8,11 @@ module Yamln8tor
     end
 
     def validate
-      YAML.load(f)
-    rescue YAML::Exception => e
+      YAML.load(filename)
+      return true
+    rescue Exception => e
       errors << e
+      return false
     end
   end
 end
