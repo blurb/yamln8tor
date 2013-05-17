@@ -1,5 +1,5 @@
 require "thor"
-require "psych"
+require "yamln8tor/validator"
 
 module Yamln8tor
   class Cli < Thor
@@ -11,13 +11,11 @@ module Yamln8tor
 
       Dir.chdir(directory)
       files = Dir.glob "**/*.yml"
-      files.each do |f|
-        begin
-          Psych.load_file(f)
-        rescue Psych::SyntaxError => e
-          errors << e
-          puts e.message
-        end
+
+      files.each do | file |
+        v = Validator.new(file)
+        v.validate
+        errors << validate.errors
       end
 
       puts "Finished validating YAML files. Found #{errors.count} errors."
