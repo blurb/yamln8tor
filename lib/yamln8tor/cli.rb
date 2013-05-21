@@ -17,7 +17,7 @@ module Yamln8tor
       files.each do | file |
         v = Validator.new(file)
         v.validate
-        errors << validate.errors
+        errors << v.errors
       end
 
       puts "Finished validating YAML files. Found #{errors.count} errors."
