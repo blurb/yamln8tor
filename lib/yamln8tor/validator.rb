@@ -1,5 +1,6 @@
 require "ya2yaml"
 require "ostruct"
+require "yaml"
 $KCODE = "UTF8"
 
 module Yamln8tor
@@ -12,7 +13,7 @@ module Yamln8tor
     end
 
     def validate
-      ym = YAML.load read_file
+      ym = ::YAML.load read_file
       ym.ya2yaml(:syck_compatible => true)
       return true
     rescue ArgumentError => e
