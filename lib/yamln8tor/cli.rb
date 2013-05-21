@@ -12,6 +12,8 @@ module Yamln8tor
       Dir.chdir(directory)
       files = Dir.glob "**/*.yml"
 
+      require 'pry'; binding.pry
+      
       files.each do | file |
         v = Validator.new(file)
         v.validate
