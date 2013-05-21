@@ -1,3 +1,7 @@
+require "ya2yaml"
+require "ostruct"
+$KCODE = "UTF8"
+
 module Yamln8tor
   class Validator
     attr_reader :filename, :errors
@@ -8,11 +12,19 @@ module Yamln8tor
     end
 
     def validate
-      YAML.load(filename)
+      ym = YAML.load read_file
+      ym.ya2yaml(:syck_compatible => true)
       return true
-    rescue Exception => e
-      errors << e
+    rescue ArgumentError => e
+      error = ::OpenStruct.new(:message => e.message, :filename => filename)
+      errors << error
       return false
+    end
+
+    private
+
+    def read_file
+      File.open(filename, "r")
     end
   end
 end

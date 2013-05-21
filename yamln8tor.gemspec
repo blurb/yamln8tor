@@ -15,4 +15,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Yamln8tor::VERSION
   gem.add_dependency "thor"
+  gem.add_dependency "ya2yaml"
 end

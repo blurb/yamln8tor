@@ -2,8 +2,7 @@ require "spec_helper"
 
 describe Yamln8tor::Validator do
   let(:yaml_path) { "spec/fixtures/correct.yml" }
-  let(:yaml) { File.new yaml_path, 'r' }
-  subject(:validator) { Yamln8tor::Validator.new(yaml) }
+  subject(:validator) { Yamln8tor::Validator.new(yaml_path) }
 
   it "returns instance of validator" do
     validator.should be_instance_of Yamln8tor::Validator
@@ -20,7 +19,7 @@ describe Yamln8tor::Validator do
 
     context "for invalid file" do
       let(:yaml_path) { "spec/fixtures/malformed.yml"}
-      it { should be_all { |err| err.kind_of? Exception } }
+      it { should be_all { |err| err.message && err.filename == yaml_path } }
     end
   end
 

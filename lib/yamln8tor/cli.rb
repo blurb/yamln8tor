@@ -12,15 +12,17 @@ module Yamln8tor
       Dir.chdir(directory)
       files = Dir.glob "**/*.yml"
 
-      require 'pry'; binding.pry
-      
       files.each do | file |
         v = Validator.new(file)
         v.validate
-        errors << v.errors
+        errors += v.errors unless v.errors.empty?
       end
 
-      puts "Finished validating YAML files. Found #{errors.count} errors."
+      puts "Finished validating #{files.count} YAML files. Found #{errors.count} errors."
+
+      errors.each do |e|
+        puts e.filename + ": " + e.message
+      end
     end
   end
 end
